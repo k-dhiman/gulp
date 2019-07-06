@@ -3,7 +3,7 @@ const { src, dest, task, parallel, series, watch } = require('gulp');
 var sass = require('gulp-sass');
 var uglifycss = require('gulp-uglifycss');
 
-// create tasks
+// create functions
 function copyfiles(done){
 	return src('src/*.html')
 	.pipe(dest('dist/'));
@@ -23,6 +23,7 @@ function watcher(){
 	watch('src/**', copyfiles);
 };
 
+// create tasks
 task('copyfiles', copyfiles);
 
 task('sass', sass);
