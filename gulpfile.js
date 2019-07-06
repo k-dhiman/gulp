@@ -1,7 +1,7 @@
 // variable  declairatioin
 const { src, dest, task, parallel, series, watch } = require('gulp');
-var sass = require('gulp-sass');
-var uglifycss = require('gulp-uglifycss');
+const sass = require('gulp-sass');
+const uglifycss = require('gulp-uglifycss');
 
 // create functions
 function copyfiles(done){
@@ -10,7 +10,7 @@ function copyfiles(done){
 	done();
 };
 
-function sass(done){
+function style(done){
 	return src('src/assets/css/*.scss')
 	.pipe(sass())
 	.pipe(uglifycss())
@@ -19,15 +19,16 @@ function sass(done){
 };
 
 function watcher(){
-	watch('src/assets/css/*.scss', sass);
+	watch('src/assets/css/*.scss', style);
 	watch('src/**', copyfiles);
 };
 
 // create tasks
 task('copyfiles', copyfiles);
 
-task('sass', sass);
+task('style', style);
 
 task('watch', series(watcher));
 
 task('default', parallel('copyfiles','watch') );
+
