@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.5.0",
+    "@babel/register": "^7.4.4",
     "gulp": "^4.0.2"
   },
   "dependencies": {
